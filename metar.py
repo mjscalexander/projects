@@ -1,7 +1,5 @@
 import requests, bs4
 
-
-
 def get_aviation_wx(airport):
     res = requests.get('https://www.aviationweather.gov/metar/data?ids={}&format=decoded&date=&hours=0'.format(airport))
     res.raise_for_status()
@@ -28,7 +26,6 @@ def get_aviation_wx(airport):
         weather_data = td_elmt[19].get_text()
     except IndexError:
         pass
-
     print('\n', "Airport: " + arpt)
     print('\n', metar_raw)
     print('\n', temp_label, temp_data)
@@ -42,7 +39,7 @@ def get_aviation_wx(airport):
         print('\n', weather_label, weather_data)
     except UnboundLocalError:
         pass
-
 airport = input("Please enter airport you wish to get weather for (ie. KORD): ")
 
-get_aviation_wx(airport)
+if __name__== "__main__":
+    get_aviation_wx(airport)
